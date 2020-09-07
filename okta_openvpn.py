@@ -240,12 +240,12 @@ class OktaAPIAuth(object):
                     return True
             if 'errorCauses' in res:
                 msg = res['errorCauses'][0]['errorSummary']
-                log.debug('User %s MFA token authentication failed: %s',
+                log.warning('User %s MFA token authentication failed: %s',
                           self.username,
                           msg)
             return False
         else:
-            log.info("User %s is not allowed to authenticate: %s",
+            log.warning("User %s is not allowed to authenticate: %s",
                      self.username,
                      status)
             return False
